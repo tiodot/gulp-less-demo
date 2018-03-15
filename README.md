@@ -30,3 +30,15 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['less', 'watch']);
 ```
+
+# use
+
+1. install dependencies:
+```
+npm i
+```
+
+2. compile less:
+```
+./node_modules/.bin/gulp default
+```

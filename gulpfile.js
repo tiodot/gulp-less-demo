@@ -10,12 +10,12 @@ gulp.task('less', function () {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./less/*.less', function (files) {
+    gulp.watch('./less/*.less', function (event) {
         const fileManagers = less.environment && less.environment.fileManagers || [];
         fileManagers.forEach(function (fileManager) {
-            if (fileManager.contents) {
-                // clear the cache file;
-                fileManager.contents = {};
+            if (fileManager.contents && fileManager.contents[event.path]) {
+                // clear the changed file cache;
+                fileManager.contents[event.path] = null;
             }
         });
         
